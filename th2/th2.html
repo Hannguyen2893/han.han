@@ -1,0 +1,271 @@
+<!DOCTYPE html> 
+<html> 
+    <title>Giải phương trình bậc 2</title>
+    <head> 
+         <body> 
+            <h1> Câu 1 </h1>
+            <h2>Giải phương trình bậc 1</h2>
+    <label for="a">Nhập giá trị a: </label>
+<input type="number" id="a"><br><br>
+
+<label for="b">Nhập giá trị b: </label>
+<input type="number" id="b"><br><br>
+
+<button onclick="solveEquation()">Kết quả</button>
+
+<p id="result"></p>
+
+<script>
+    function solveEquation() {
+        let a = parseInt(document.getElementById("a").value);
+        let b = parseInt(document.getElementById("b").value);
+
+        if (a === 0) {
+            document.getElementById("result").innerText = "Phương trình vô nghiệm";
+        } else {
+            let x = -b / a;
+            document.getElementById("result").innerText = "Nghiệm của phương trình là: x = " + x;
+        }
+    }
+</script>
+
+<h1>Câu 2 </h1>
+<h2 type align ="Center"> ĐÓNG GÓP Ý KIẾN VỀ SẢN PHẨM </h2>
+<H4> Các thông tin đóng góp của bạn điền sẽ được ghi nhận và kiểm tra 
+    Vui lòng điền đầy đủ thông tin , ghi rõ dấu , chữ kèm theo minh chứng để xác thực ( nếu có)
+</H4>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<form id="form1" action="#">
+    <label for="hoTen">Họ và tên:</label><br>
+    <input type="text" id="hoTen" name="hoTen"><br><br>
+    
+    <label for="maThe">Mã thẻ:</label><br>
+    <input type="text" id="maThe" name="maThe"><br><br>
+    
+    <label for="ssdt">Số điện thoại:</label><br>
+    <input type="text" id="ssdt" name="ssdt"><br><br>
+    
+    <label for="yKien">Ý kiến:</label><br>
+    <textarea id="yKien" name="yKien" rows="4" cols="50"></textarea><br><br>
+    
+    <input  type="button" value="Nộp ý kiến" onclick="submitForm()">
+</form>
+
+<div id="submittedInfo" style="display:none;">
+    <h2>Thông tin đã điền:</h2>
+    <p><strong>Họ và tên:</strong> <span id="submittedHoTen"></span></p>
+    <p><strong>Mã thẻ:</strong> <span id="submittedMaThe"></span></p>
+    <p><strong>Số điện thoại:</strong> <span id="submittedSsdt"></span></p>
+    <p><strong>Ý kiến:</strong> <span id="submittedYKien"></span></p>
+</div>
+
+<script>
+    function submitForm() {
+        var hoTen = document.getElementById("hoTen").value;
+        var maThe = document.getElementById("maThe").value;
+        var ssdt = document.getElementById("ssdt").value;
+        var yKien = document.getElementById("yKien").value;
+        
+        document.getElementById("submittedHoTen").innerText = hoTen;
+        document.getElementById("submittedMaThe").innerText = maThe;
+        document.getElementById("submittedSsdt").innerText = ssdt;
+        document.getElementById("submittedYKien").innerText = yKien;
+        
+        document.getElementById("submittedInfo").style.display = "block";
+    }
+</script>
+
+<h1> Câu 3 </h1>
+<style> 
+.container { display: flex; } 
+.left { width: 50%; padding: 20px; } 
+.right { width: 50%; padding: 20px; } 
+.form-control { margin-bottom: 10px; }
+ </style> 
+ <div class="container"> 
+<div class="left">
+ <h2>Thông tin liên hệ</h2>
+  <p>📍 Nguyễn Văn Bảo , phường 5 , TP.Hồ Chí Minh</p> 
+  <p>✉️   Nguyenhonghan@gmail.com</p>
+   <p>📞 09653457543</p>
+ </div>
+  <div class="right">
+     <h2>Phiếu điền thông tin</h2>
+      <form> <div class="form-control">
+         <label for="fullname">Họ tên:</label> <input type="text" id="fullname" name="fullname">
+         </div>
+          <div class="form-control"> <label for="email">Email:</label>
+             <input type="email" id="email" name="email"> </div> 
+             <div class="form-control"> <label for="address">Địa chỉ:</label>
+                 <input type="text" id="address" name="address"> </div> 
+                
+                <input  type="button" value="Nộp thông tin " onclick="submitForm()">
+            </form>
+            </div>
+            <div id="submittedInfo" style="display:none;">
+                <h2>Thông tin đã điền:</h2>
+                <p><strong>Họ và tên:</strong> <span id="submittedHoTen"></span></p>
+                <p><strong>Email:</strong> <span id="submittedemail"></span></p>
+                <p><strong>Đại chỉ :</strong> <span id="submittedaddress"></span></p>
+            
+            <script>
+                function submitForm() {
+                    var hoTen = document.getElementById("hoTen").value;
+                    var maThe = document.getElementById("email").value;
+                    var email = document.getElementById("address").value;
+                    
+                    document.getElementById("submittedHoTen").innerText = hoTen;
+                    document.getElementById("submittedemail").innerText = email;
+                    document.getElementById("submittedaddress").innerText = email;
+                  
+                    
+                    document.getElementById("submittedInfo").style.display = "block";
+                }
+            </script>
+</div>
+</div>
+</div>
+<h1>Câu 4</h1>
+<h2>Tính chỉ số BMI</h2>
+<label for="weight">Cân nặng(kg):</label>
+<input type="number" id="weight" placeholder="Enter your weight"><br>
+    
+<label for="height">Chiều cao (cm):</label>
+<input type="number" id="height" placeholder="Enter your height"><br>
+    
+<label for="age-group">Nhóm tuổi:</label>
+<select id="age-group">
+    <option value="young">Trẻ</option>
+    <option value="middle">Trung niên</option>
+    <option value="old">Già</option>
+</select><br>
+        
+<button onclick="solveEquation()">Kết quả</button>
+
+<p id="result"></p>
+
+<script>
+    function solveEquation() {
+        let weight = parseInt(document.getElementById("weight").value);
+        let height = parseInt(document.getElementById("height").value);
+
+        if (bmi < 18.5) {
+            document.getElementById("result").innerText = "Dưới chuẩn";
+        }  else if (bmi >= 18.5 && bmi < 24.9) {
+            document.getElementById("result").innerText  = "Bình thường";
+        } else if (bmi >= 25 && bmi < 29.9) {
+            document.getElementById("result").innerText  = "Thừa cân";
+        } else if (bmi >= 30 && bmi < 34.9) {
+            document.getElementById("result").innerText = "Béo phì cấp I";
+        } else if (bmi >= 35 && bmi < 39.9) {
+            document.getElementById("result").innerText  = "Béo phì cấp II";
+        } else {
+            message = "Béo phì cấp III";
+        }
+            document.getElementById("result").innerText = "Kết quả BMI là: " ;
+    }
+    
+    
+</script>
+
+<h1> Câu 5 </h1>
+<style>
+ form { width: 300px; margin: 0 auto; text-align: center; }
+ input { margin-bottom: 10px; padding: 5px; } 
+ button { padding: 5px 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+  </style> 
+  </head> 
+  <body> 
+    <h2>Đăng nhập</h2> 
+    <form action="#" method="post">
+         <input type="text" name="username" placeholder="Tên đăng nhập" required><br> 
+         <input type="password" name="password" placeholder="Mật khẩu" required><br> 
+         <button type="submit">Đăng nhập</button> </form>
+
+<h1> Câu 6 </h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        margin-top: 100px;
+    }
+
+    .container {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"], input[type="password"], button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Đăng nhập</h2>
+    <input type="text" placeholder="Tên đăng nhập">
+    <input type="password" placeholder="Mật khẩu">
+    <button>Đăng nhập</button>
+    <div>
+        <a href="#">Quên mật khẩu?</a> | <a href="#">Đăng kí</a>
+    </div>
+</div>
