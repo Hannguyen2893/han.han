@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/front-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="anh_move.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: 1px solid black;
+    }
+
+    body {
+        height: 100vh;
+        background: gainsboro;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper {
+        width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: space-between;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        object-fit: cover;
+        transition: 0.25s;
+    }
+
+    .image {
+        width: 20%;
+        height: 200px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .image:hover img {
+        transform: scale(1.2);
+    }
+
+    .gallery {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: grey;
+        display: flex;
+        align-items: center;
+        color: antiquewhite;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.8);
+        transition: 0.5;
+    }
+
+    .close {
+        position: fixed;
+        top: 15px;
+        right: 25px;
+        font-size: 35px;
+    }
+
+    .control {
+        font-size: 35px;
+        color: rgb(189, 135, 135);
+        position: absolute;
+    }
+
+    .control.prev {
+        left: 15px;
+    }
+
+    .control.next {
+        right: 15px;
+    }
+
+    .gallery_inner {
+        width: 70%;
+        height: 70%;
+        margin: 0 auto;
+    }
+
+    .show {
+        opacity: 0;
+        pointer-events: auto;
+        transform: scale(0.8);
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+<body>
+<div class="wrapper"><!--chuaw ddongs -->
+    <div class="image">
+        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/12/hinh-nen-chibi-76.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://anhanime.com/wp-content/uploads/2022/05/A%CC%89nh-Anime-chibi-nam-10.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/08/hinh-chibi-cute-de-ve-20.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://i.pinimg.com/236x/7f/c0/60/7fc06000a02960f69b1607c9b2a74c3f.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/12/hinh-nen-chibi-1.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://i.9mobi.vn/cf/Images/np/2022/11/16/anh-cute-de-thuong-dang-yeu-nhat-8.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://ttgdnn-gdtxquan11.edu.vn/wp-content/uploads/2023/03/anh-anime-chibi-sieu-cute-de-thuong-khong-tuong-moi-nhat-2023.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474076Jzf/avatar-chibi-anime_031459449.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://noithatbinhminh.com.vn/wp-content/uploads/2023/10/hinh-anh-anime-chibi-cute-39.jpg" alt="">
+    </div>
+    <div class="image">
+        <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/08/hinh-chibi-cute-de-ve-19.jpg" alt="">
+    </div>
+    <div class="gallery">
+        <i class="fa-regular fa-xmark close"></i>
+        <div class="gallery_inner">
+            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/12/hinh-nen-chibi-34.jpg" alt="">
+        </div>
+        <div class="control prev">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="control next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+    </div>
+</div>
+<!--script-->
+<script>
+    var images = document.querySelectorAll('.image img');
+    var prev = document.querySelector('.control.prev');
+    var next = document.querySelector('.control.next');
+    var close = document.querySelector('.close');
+    var galleryInner = document.querySelector('.gallery_inner img');
+    var gallery = document.querySelector('.gallery');
+    var currentIndex = 0;
+
+    function showGallery() {
+        if (currentIndex == 0) {
+            prev.classList.add('hide');
+        } else {
+            prev.classList.remove('hide');
+        }
+        if (currentIndex == images.length - 1) {
+            next.classList.add('hide');
+        } else {
+            next.classList.remove('hide');
+        }
+    }
+
+    images.forEach((item, index) => {
+        item.addEventListener('click', function () {
+            currentIndex = index;
+            showGallery();
+            gallery.classList.add('show');
+            galleryInner.src = this.src;
+        });
+    });
+
+    close.addEventListener('click', function () {
+        gallery.classList.remove('show');
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.keyCode == 27) {
+            gallery.classList.remove('show');
+        }
+    });
+
+    prev.addEventListener('click', function () {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showGallery();
+            galleryInner.src = images[currentIndex].src;
+        }
+    });
+
+    next.addEventListener('click', function () {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            showGallery();
+            galleryInner.src = images[currentIndex].src;
+        }
+    });
+</script>
+</body>
+</html>
